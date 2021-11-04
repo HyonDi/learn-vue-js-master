@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <!-- router-link는 앵커태그로 변환되어 나타난다.(a태그) -->
+            <router-link to="/login">Login</router-link>
+            <router-link to="/Main">Main</router-link>
+        </div>
+        <!-- 라우터가 연결되어있어야한다. 아니면 에러남. 
+            페이지가 표시될 부분.
+            컴포넌트가 뿌려질 영역.(Login Component, Main Component)-->
+        <router-view></router-view>
+    </div>
+
+    <!-- 순서 중요!! vue.js 먼저. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        var LoginComponent = {
+            template: '<div>login</div>'
+        }
+
+        var MainComponent = {
+            template: '<div>main</div>'
+        }
+
+        var router = new VueRouter({
+            // 페이지의 라우팅 정보가 들어간다.
+            // 라우팅 정보 : 어떤 url로 이동했을 때, 어떤 페이지를 뿌려줄지.
+            // 배열, 페이지의 개수만큼 객체가 필요하다.
+
+            // # 없어진다.
+            mode: 'history',
+            routes: [
+                // 로그인페이지 정보
+                {
+                    // 페이지의 url.
+                    path: '/login',
+                    name: 'login',
+                    // 해당 url에서 표시될 컴포넌트.
+                    component: LoginComponent
+                },
+                // 메인페이지 정보
+                {
+                    path:'/main',
+                    component: MainComponent
+                }
+            ]
+        });
+
+        new Vue({
+            el: '#app',
+            router: router,
+            // components:{
+                
+            // }
+        });
+        // vueresource 로 만들어진 샘플들은 오래된거니 주의하기.
+        //(pagekit/vue-resource) - 에바뉴?가 만듬.
+        // 에바뉴가 에이잭스 더이상 관리안할거고 액시오스가 좋다고 말했대.
+        // 그럼 지금은 뭘봐야하나???
+        // 액시오스는 문서화가 잘되어있고 API가 다양하대.
+        // promise(자바스크립트의 비동기 처리 패턴)와 node.js 기반
+        // http통신라이브러리
+        // 예제나와있는것중 볼것 : 예제, API설명, 속성설명, 
+        // 인스턴스만들어쓰는거(custominstance),에러핸들링,토큰취소,인터셉터
+
+
+        // 자바스크립트의 비동기처리패턴
+        // 1. callback
+        // 2. promise
+        // 3. promise + generator
+        // 4. async & await
+
+
+
+        // 오픈소스 깃헙에있는거 사용할 때 주의점
+        // - 스타 수 많은지 봐야함.
+        // - 커밋, 컨트리뷰터 수도 보면 좋다.
+        // - 컨트리뷰터는 몇명이 고쳤는지.
+        // - 마지막 수정된게 며칠전인지 보는것도 중요.
+
+    </script>
+
+</body>
+</html>

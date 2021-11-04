@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <div id="app2">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        // instance 처음 생성시 root component 가 된다.
+
+        //Vue.component('컴포넌트 이름', 컴포넌트 내용);
+        // 전역 컴포넌트 , 실무에서 등록하는 경우는 거의 없다.
+        // 플러그인이나 라이브러리에서 전역으로 생성해야하는경우에만 사용
+        Vue.component('app-header',{
+            template: '<h1>Header</h1>'
+        });
+
+        // 지역 컴포넌트 등록 방식
+        new Vue({
+            el: '#app',// 얘가 부모인가
+            components:{
+                'app-footer': {
+                    template:'<footer>Footer</footer>'
+                }
+            }
+        });
+
+        // 서비스구현할때엔 새로 등록할 필요 없다.
+        new Vue({
+            el: '#app2'
+        })
+
+        // 지역컴포넌츠는 하단에 어떤게 등록됐는지 알 수 있다.
+        // 따라서 지역컴포넌츠로 등록하는게 좋음.
+        // 전역컴포넌트는 인스턴스마다 생성하지않아도 등록된다.
+        // 지역컴포넌트는은 인스턴스마다 새로 생성해줘야한다.
+
+        // 각각의 컴포넌트는 데이터를 각각 갖고있음.
+        // 다른 컴포넌트와 데이터를 공유하려면 
+        // 상위에서 하위로는 데이터를 내려줌. 프롭스(Props) 속성 전달
+        // 하위에서 상위로는 이벤트를 올려줌, 이벤트 발생.
+        // 장점 : 데이터의 흐름을 추적할 수 있다.
+    </script>
+    
+</body>
+</html>

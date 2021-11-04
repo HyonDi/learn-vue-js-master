@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Axios</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="getData">get user</button>
+    <div>
+      {{ users }}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      methods: {
+        getData: function() { 
+          var vm = this;/// vm 은 인스턴스를 가리키는 약어로 변수로 많이사용된다.
+          axios.get('https://jsonplaceholder.typicode.com/users/')
+            .then(function(response) {
+              console.log(response.data);
+              vm.users = response.data;
+              // 여기에 쓰이는 this는 vuew객체의 this가 아님.
+              // 비동기처리 했을 때 실행컨텍스트가 바뀌기때문.
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      }
+    })
+  </script>
+
+
+V8엔진
+싱글쓰레드 기반.
+콜백큐를 사용
+
+엔진(V8엔진)의 주요 구성요소는
+메모리 힘(메모리 할당이 일어나는 곳)
+Call Stack(코드 실행에 따라 호출 스택이 쌓이는 곳.)
+
+데이터바인딩{{}}
+디렉티브 v- 라고 붙는 속성들.
+</body>
+</html>
