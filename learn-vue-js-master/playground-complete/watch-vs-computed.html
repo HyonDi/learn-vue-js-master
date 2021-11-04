@@ -12,6 +12,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     new Vue({
       el: '#app',
@@ -19,11 +20,13 @@
         num: 10
       },
       computed: {
+        // 빠르게 계산한다. 계속해서. 값에대한 계산. 대체로 모든상황에 적합.
         doubleNum: function() {
           return this.num * 2;
         }
       },
       watch: {
+        // 무거운로직. 매번실행하는게 부담스러운. 데이터 요청에 적합.
         num: function(newValue, oldValue) {
           this.fetchUserByNumber(newValue);
         }
