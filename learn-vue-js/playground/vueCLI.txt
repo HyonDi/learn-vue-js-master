@@ -4,3 +4,47 @@ vue init webpack-simple '프로젝트 폴더 위치'
 
 [Vue CLI 3.x]
 vue create '프로젝트 폴더 위치'
+vue.cmd create [project-name] // 대괄호는 빼고 실행하기.
+
+node -v
+npm -v
+npm install -g @vue/cli     // 설치시 권한에러시 앞에 sudo 붙이기
+
+
+userProfile\appData\Roaming\npm\node_modules : npm 설치위치
+
+* 프로젝트 생성 방법
+vue.cmd create [project-name] // 대괄호는 빼고 실행하기.
+default Vue2 로 선택하기.(vue3 은 아직 많이 쓰이지않아 검증 불확실.)
+
+* 생성된 프로젝트의 npm serve
+cd [project-name] // 대괄호는 빼고 실행하기.
+
+npm run serve // 서비스 구동할수있는 기본 구성 구현한 것이다.
+ -얘는 package.json에서 정의되어있는 script 라는 속성 아래 serve 라는
+    명령어를 실행시키는 것이다.
+    원래는 vue-cli-service serve 이거임.
+ -그럼 npm run serve 를 했을때 실행되는것은 무엇인가?
+    public/index.html 
+ - 이 파일 안의 built files will be auto injected 라는 주석자리에
+    빌트파일들이 추가된다는 뜻. src폴더안의 여러가지 파일들을 종합해서 하나의
+    파일로 변환해서(혹은 최소한의 파일로 변환해서) 이 자리에 주입하는 것.
+  => webpack 학습 필요
+ - src/components/main.js 에서
+  new Vue({}).$mount('#app') 은 new Vue({el:'#app'}) 과 같다.
+  - render: h=>h(App)
+  템플릿속성 적용시.......필요한..render 함수...
+
+ - 싱글파일 컴포넌트란?
+    .vue 파일을 말함. 새파일 만들고 vue(낮은버전에서는 scf)치고 탭누르면
+    기본구조를 잡아준다.
+
+  - App.vue 파일.
+
+
+
+// npm: node package manager
+
+
+
+
