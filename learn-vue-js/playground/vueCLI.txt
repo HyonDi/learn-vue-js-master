@@ -48,3 +48,9 @@ npm run serve // 서비스 구동할수있는 기본 구성 구현한 것이다.
 ss
 
 
+* 실행시킨 서버(npm run serve 명령어를 통해) = webpackDevServer(간단한 노드서버).
+종료 = Ctrl + C
+
+
+
+
